@@ -19,8 +19,8 @@ cmake .. "-DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake"
 cmake --build .' > build.sh
 chmod +x build.sh
 
-./build.sh
-echo 'Successfully built! now wrapping up'
+# ./build.sh
+echo 'As it stands, this project will NOT compile. Please work on each section before running! Successfully built! now wrapping up'
 
 cd ..
 # confirm and print out confirmation message + instructions.
