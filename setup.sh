@@ -19,8 +19,13 @@ cmake .. "-DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake"
 cmake --build .' > build.sh
 chmod +x build.sh
 
+echo '#!/bin/bash
+
+cmake .. "-DTEST_WIKISCRAPER=ON -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake"
+cmake --build .' > test.sh
+
 # ./build.sh
-echo 'As it stands, this project will NOT compile. Please work on each section before running! Successfully built! now wrapping up'
+echo 'As it stands, this project will NOT compile. Please work on each section and test your wikiscraper.cpp file before running! Successfully built! now wrapping up'
 
 cd ..
 # confirm and print out confirmation message + instructions.
@@ -34,7 +39,8 @@ cd ..
 chmod +x build_and_run.sh
 
 echo 'From now on, all you have to do to compile, build, and run your project
-is to type "./build_and_run.sh" (without the quotes) and hit enter.
+is to type "./build_and_run.sh" (without the quotes) and hit enter. To test, run
+"./test-wikiscraper.sh".
 If you run into any issues and want to quit out of the program, press the ctrl and c key
 at the same time!'
 

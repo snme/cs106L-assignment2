@@ -38,6 +38,9 @@ private:
 };
 
 vector<string> findWikiLadder(const string& start_page, const string& end_page);
+bool valid_wikilink(const string& link);
+unordered_set<string> findWikiLinks(const string& inp);
+
 
 
 #endif // WIKISCRAPER_H

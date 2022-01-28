@@ -20,13 +20,14 @@ using std::unordered_map;   using std::unordered_set;
 // Please implement a function that can determine if a wiki link is valid or not.
 // As a reminder, it needs to take in a string and return whether or not 
 // # or : is contained in the string.
-// Estimated length: ~5-10 lines
+// Estimated length: <5 lines
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // BEGIN STUDENT CODE HERE
 bool valid_wikilink(const string& link) {
-    // replace these lines!
-    (void) link;
-    return false;
+    const static string invalid_delims = "#:";
+    return  std::all_of(link.begin(), link.end(), [](char ch) {
+                return std::find(invalid_delims.begin(), invalid_delims.end(), ch) == invalid_delims.end();
+            });
 }
 // END STUDENT CODE HERE
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -42,36 +43,36 @@ unordered_set<string> findWikiLinks(const string& inp) {
 
     while(true) {
 
-        // TODO: ASSIGNMENT 2 TASK 1:
+        // TODO: ASSIGNMENT 2 TASK 5:
         // Set url_start to the next location of "delim" (starting your search at url_start), using std::search.
         // After doing so, break out of the while loop if there are no occurrences of delim left
         // (use your work from the line above).
-        // Estimated length: 2-3 lines
+        // Estimated length: 2 lines
         ///////////////////////////////////////////////////////////////////////////////////////////////////
         // BEGIN STUDENT CODE HERE
-        
+        url_start = std::search(url_start, end, delim.begin(), delim.end());
+        if (url_start == end) {
+            break;
+        }
         // END STUDENT CODE HERE
         ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-        // TODO: ASSIGNMENT 2 TASK 2:
+        // TODO: ASSIGNMENT 2 TASK 6:
         // Set url_end to the end of the wikilink. Start searching after the delimeter you found above.
-        // Make sure to use std::find! (std::find looks for a single element in a container, e.g. character in 
-        // a string—std::search looks for a series of elements in a container, like a substring in a string. 
-        // remember that a string is represented as an array of characters, and is also a container!)
         // Estimated length: 1 lines
         ///////////////////////////////////////////////////////////////////////////////////////////////////
         // BEGIN STUDENT CODE HERE
-
+        auto url_end = std::find(url_start + delim.size(), end, '"');
         // END STUDENT CODE HERE
         ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-        // TODO: ASSIGNMENT 2 TASK 3:
-        // Last exercise of this function! Create a string from the two iterators (url_start and url_end) above
+        // TODO: ASSIGNMENT 2 TASK 7:
+        // Last exercise! Create a string from the two iterators (url_start and url_end) above
         // using a string constructor. Make sure you start the string AFTER the delimiter you found in task 5!
         // Estimated length: 1 lines
         ///////////////////////////////////////////////////////////////////////////////////////////////////
         // BEGIN STUDENT CODE HERE
-
+        string link = string(url_start + delim.size(), url_end);
         // END STUDENT CODE HERE
         ///////////////////////////////////////////////////////////////////////////////////////////////////
 
