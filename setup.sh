@@ -22,7 +22,7 @@ chmod +x build.sh
 echo '#!/bin/bash
 
 cmake .. "-DTEST_WIKISCRAPER=ON -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake"
-cmake --build .' > test.sh
+cmake --build .' > build-test.sh
 
 # ./build.sh
 echo 'As it stands, this project will NOT compile. Please work on each section and test your wikiscraper.cpp file before running! Successfully built! now wrapping up'

@@ -21,7 +21,7 @@ import subprocess
 import sys
 
 # compile both files with g++.
-subprocess.run(["sh", "-c", "cd build; ./test.sh; cd ..; ./build/test;"], capture_output=False,
+subprocess.run(["sh", "-c", "cd build; ./build-test.sh; cd ..; ./build/test;"], capture_output=False,
                 timeout=5, encoding=locale.getpreferredencoding())
 subprocess.run(["sh", "-c", "g++ -std=c++11 exercises.cpp -o exercises"], capture_output=False,
                 timeout=5, encoding=locale.getpreferredencoding())

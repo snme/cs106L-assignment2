@@ -1,7 +1,9 @@
 #include <iostream>
+#include <filesystem>
 #include <algorithm>
 #include <vector>
 #include <unordered_set>
+#include <fstream>
 #include "wikiscraper.h"
 #include <string>
 
@@ -65,6 +67,24 @@ const string valid_wikilink_test7() {
     return valid_wikilink(pre + "hell&o:" + suf) ? "valid" : "invalid";
 }
 
+const string findWikiLinks_test1() {
+    // read in test file into string (Wikipedia)
+    std::ifstream in("../test-resources/Germany.html");
+    std::ostringstream ss;
+    ss << in.rdbuf();
+    string file = ss.str();
+
+    // call findWikiLinks for the inputted Wikipedia page
+    auto links = findWikiLinks(file);
+
+    // convert links to string.
+    string res = "";
+    for (const auto& link : links) {
+        res += link + "\n";
+    }
+    return res;
+}
+
 
 /*********************************************
  * main — provided code, not necessary to edit!
@@ -88,9 +108,10 @@ int main(int argc, char *argv[]) {
         valid_wikilink_test4,
         valid_wikilink_test5,
         valid_wikilink_test6,
-        valid_wikilink_test7
+        valid_wikilink_test7,
+        findWikiLinks_test1
     };
-    if (exerciseNum > 0 && exerciseNum < 8) {
+    if (exerciseNum > 0 && exerciseNum < 9) {
         cout << tests[exerciseNum]() << endl;
     }
     
