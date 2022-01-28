@@ -1,6 +1,7 @@
 #include <iostream>     // for cout, cin
 #include <fstream>      // for ifstream
 #include <sstream>      // for stringstream
+#include <filesystem>   	// making inputting files easier
 #include <unordered_set>
 #include <vector>
 #include <queue>
@@ -29,7 +30,7 @@ using std::unordered_set;   using std::cin;
  *       https://en.wikipedia.org/wiki/Stanford_University
  */
 
-// TODO: ASSIGNMENT 2 TASK 1:
+// TODO: ASSIGNMENT 2 TASK 5:
 // Please implement the following function, which should take in two sets of strings
 // and returns the number of common strings between the two sets. You should use 
 // lambdas and std::count_if.
@@ -52,7 +53,7 @@ vector<string> findWikiLadder(const string& start_page, const string& end_page) 
     using container = vector<vector<string>>;
     unordered_set<string> target_set = w.getLinkSet(end_page);
 
-    // TODO: ASSIGNMENT 2 TASK 2:
+    // TODO: ASSIGNMENT 2 TASK 6:
     // Please implement the comparator function that will be used in the priority queue.
     // You'll need to consider what variables this lambda will need to capture, as well as
     // what parameters it'll take in. Be sure to use the function you implemented in Task 1!
@@ -70,12 +71,14 @@ vector<string> findWikiLadder(const string& start_page, const string& end_page) 
     // END STUDENT CODE HERE
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // TODO: ASSIGNMENT 2 TASK 3:
-    // Please instantiate the priority queue for this algorithm, called "queue". Be sure to use your work from Task 2!
+    // TODO: ASSIGNMENT 2 TASK 7:
+    // Last exercise! please instantiate the priority queue for this algorithm, called "queue". Be sure 
+    // to use your work from Task 2, cmp_fn, to instantiate our queue. 
     // Estimated length: 1 line
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     // BEGIN STUDENT CODE HERE
     // something like priority_queue<...> queue(...);
+
     // END STUDENT CODE HERE
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -113,6 +116,18 @@ vector<string> findWikiLadder(const string& start_page, const string& end_page) 
 }
 
 int main() {
+    // a quick working directory fix to allow for easier filename inputs
+    auto path = std::filesystem::current_path() / "res/";
+    std::filesystem::current_path(path);
+    std::string filenames = "Available input files: ";
+    for (const auto& entry : std::filesystem::directory_iterator(path)) {
+        std::string filename = entry.path().string();
+        filename = filename.substr(filename.rfind("/") + 1);
+        filenames += filename + ", ";
+    }
+    // omit last ", ".
+    cout << filenames.substr(0, filenames.size() - 2) << "." << endl;
+
     /* Container to store the found ladders in */
     vector<vector<string>> outputLadders;
 
@@ -120,28 +135,19 @@ int main() {
     string filename;
     getline(cin, filename);
 
-    // 
-    // TODO: Create a filestream from the filename.
-    //       For each pair {start_page, end_page} in the input file,
-    //       retrieve the result of findWikiLadder(start_page, end_page)
-    //       and append that vector to outputLadders.
+    ifstream in(filename);
+    int numPairs;
+    // parse the first line as the number of tokens
+    in >> numPairs;
 
-    // ASSIGNMENT 1 (already done!)
-    ifstream infile(filename);
-    string str, line;
-    string start, end;
-
-    getline(infile, str);
-    int num = stoi(str);
-    for (int i = 0; i < num; i++) {
-        getline(infile, line);
-        stringstream ss(line);
-        ss >> start >> end;
-        // want to just provide them with the compiled executable? 
-        outputLadders.push_back(findWikiLadder(start, end));
+    // loop through each line, parsing out page names and calling findWikiLadder
+    string startPage, endPage;
+    for (int i = 0; i < numPairs; i++) {
+        // parse the start and end page from each line
+        in >> startPage >> endPage;
+        outputLadders.push_back(findWikiLadder(startPage, endPage));
     }
 
-    // ASSIGNMENT 1 (already done!)
     /*
      * Print out all ladders in outputLadders.
      * We've already implemented this for you!
