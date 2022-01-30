@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <unordered_set>
+#include <stdexcept>
 #include <unordered_map>
 #include "wikiscraper.h"
 #include "error.h"
@@ -21,6 +22,7 @@ using std::unordered_map;   using std::unordered_set;
 // As a reminder, it needs to take in a string and return whether or not 
 // # or : is contained in the string.
 // Estimated length: ~5-10 lines
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // BEGIN STUDENT CODE HERE
 bool valid_wikilink(const string& link) {
@@ -47,8 +49,12 @@ unordered_set<string> findWikiLinks(const string& inp) {
         // After doing so, break out of the while loop if there are no occurrences of delim left
         // (use your work from the line above).
         // Estimated length: 2-3 lines
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////
         // BEGIN STUDENT CODE HERE
+        // Please delete this line!
+        throw std::invalid_argument("Not implemented yet. Please finish working on wikiscraper.cpp, test it "
+        "with ./test-wikiscraper.sh, and then rerun ./build_and_run.sh once you have passed all of the provided tests!");
          
         // END STUDENT CODE HERE
         ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -59,6 +65,7 @@ unordered_set<string> findWikiLinks(const string& inp) {
         // a string—std::search looks for a series of elements in a container, like a substring in a string. 
         // remember that a string is represented as an array of characters, and is also a container!)
         // Estimated length: 1 lines
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////
         // BEGIN STUDENT CODE HERE (delete/edit this line)
         auto url_end = url_start;
@@ -69,6 +76,7 @@ unordered_set<string> findWikiLinks(const string& inp) {
         // Last exercise of this function! Create a string from the two iterators (url_start and url_end) above
         // using a string constructor. Make sure you start the string AFTER the delimiter you found in task 5!
         // Estimated length: 1 lines
+        
         ///////////////////////////////////////////////////////////////////////////////////////////////////
         // BEGIN STUDENT CODE HERE (delete/edit this line)
         string link;

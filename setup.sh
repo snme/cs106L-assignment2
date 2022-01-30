@@ -19,6 +19,7 @@ cmake .. "-DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake"
 cmake --build .' > build.sh
 chmod +x build.sh
 
+# build test configuration!
 echo '#!/bin/bash
 
 cmake .. "-DTEST_WIKISCRAPER=ON -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake"
@@ -38,6 +39,7 @@ chmod +x build_and_run.sh
 
 # build to set path to CPR
 echo 'Successfully built! Running ./build_and_run.sh.'
+rm -f build/CMakeCache.txt
 ./build_and_run.sh
 
 echo 'cmake_minimum_required(VERSION 3.0)
