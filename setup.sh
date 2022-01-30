@@ -23,6 +23,7 @@ echo '#!/bin/bash
 
 cmake .. "-DTEST_WIKISCRAPER=ON -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake"
 cmake --build .' > build-test.sh
+chmod +x build-test.sh
 
 # ./build.sh
 echo 'As it stands, this project will NOT compile. Please work on each section and test your wikiscraper.cpp file before running! Successfully built! now wrapping up'
@@ -44,3 +45,21 @@ is to type "./build_and_run.sh" (without the quotes) and hit enter. To test, run
 If you run into any issues and want to quit out of the program, press the ctrl and c key
 at the same time!'
 
+echo 'cmake_minimum_required(VERSION 3.0)
+project(wikiracer)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+find_package(cpr CONFIG REQUIRED)
+option(TEST_WIKISCRAPER "Test wikiracer only" OFF)
+
+if(TEST_WIKISCRAPER)
+    message("Building Wikiscraper Test")
+    add_executable(test test-wikiscraper.cpp wikiscraper.cpp error.cpp)
+    target_link_libraries(test PRIVATE cpr::cpr)
+else()
+    message("Building Entire Project")
+    add_executable(main main.cpp wikiscraper.cpp error.cpp)
+    target_link_libraries(main PRIVATE cpr::cpr)
+endif()' > CMakeLists.txt
