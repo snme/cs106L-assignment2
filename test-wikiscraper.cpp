@@ -111,7 +111,7 @@ int main(int argc, char *argv[]) {
         valid_wikilink_test7,
         findWikiLinks_test1
     };
-    if (exerciseNum > 0 && exerciseNum < 9) {
+    if (exerciseNum > 0 && exerciseNum < 8) {
         cout << tests[exerciseNum]() << endl;
     }
     
