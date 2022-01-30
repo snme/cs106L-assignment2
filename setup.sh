@@ -40,8 +40,8 @@ chmod +x build_and_run.sh
 # build to set path to CPR
 echo 'Successfully built! Running ./build_and_run.sh.'
 rm -f build/CMakeCache.txt
-./build_and_run.sh
-rm -f build/CMakeCache.txt
+# ./build_and_run.sh
+# rm -f build/CMakeCache.txt
 
 echo 'cmake_minimum_required(VERSION 3.0)
 project(wikiracer)
@@ -61,6 +61,9 @@ else()
     add_executable(main main.cpp wikiscraper.cpp error.cpp)
     target_link_libraries(main PRIVATE cpr::cpr)
 endif()' >| CMakeLists.txt
+
+echo 'Trying to build now!'
+./build_and_run.sh
 
 echo 'All done! From now on, all you have to do to compile, build, and run your entire project
 is to type "./build_and_run.sh" (without the quotes) and hit enter. Before doing so,
