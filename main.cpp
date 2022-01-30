@@ -2,6 +2,7 @@
 #include <fstream>      // for ifstream
 #include <sstream>      // for stringstream
 #include <filesystem>   	// making inputting files easier
+#include <stdexcept>
 #include <unordered_set>
 #include <vector>
 #include <queue>
@@ -35,6 +36,7 @@ using std::unordered_set;   using std::cin;
 // and returns the number of common strings between the two sets. You should use 
 // lambdas and std::count_if.
 // Estimated length: <4 lines
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // BEGIN STUDENT CODE HERE
 int numCommonLinks(const unordered_set<string>& curr_set, const unordered_set<string>& target_set) {
@@ -58,6 +60,7 @@ vector<string> findWikiLadder(const string& start_page, const string& end_page) 
     // You'll need to consider what variables this lambda will need to capture, as well as
     // what parameters it'll take in. Be sure to use the function you implemented in Task 1!
     // Estimated length: <3 lines
+    
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     // BEGIN STUDENT CODE HERE
     auto cmp_fn = [&w, &target_set](const vector<string>& left, const vector<string>& right) {
@@ -65,7 +68,7 @@ vector<string> findWikiLadder(const string& start_page, const string& end_page) 
         (void) w;
         (void) target_set;
         (void) left;
-        (void) right
+        (void) right;
         return false; // replace this line! make sure to use numCommonLinks.
     };
     // END STUDENT CODE HERE
@@ -75,9 +78,14 @@ vector<string> findWikiLadder(const string& start_page, const string& end_page) 
     // Last exercise! please instantiate the priority queue for this algorithm, called "queue". Be sure 
     // to use your work from Task 2, cmp_fn, to instantiate our queue. 
     // Estimated length: 1 line
+    
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     // BEGIN STUDENT CODE HERE
     // something like priority_queue<...> queue(...);
+    // please delete ALL 4 of these lines! they are here just for the code to compile.
+    std::priority_queue<vector<string>> queue;
+    throw std::invalid_argument("Not implemented yet.\n");
+    return {};
 
     // END STUDENT CODE HERE
     ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -120,6 +128,7 @@ int main() {
     auto path = std::filesystem::current_path() / "res/";
     std::filesystem::current_path(path);
     std::string filenames = "Available input files: ";
+
     for (const auto& entry : std::filesystem::directory_iterator(path)) {
         std::string filename = entry.path().string();
         filename = filename.substr(filename.rfind("/") + 1);
