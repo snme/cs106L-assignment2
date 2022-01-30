@@ -41,6 +41,7 @@ chmod +x build_and_run.sh
 echo 'Successfully built! Running ./build_and_run.sh.'
 rm -f build/CMakeCache.txt
 ./build_and_run.sh
+rm -f build/CMakeCache.txt
 
 echo 'cmake_minimum_required(VERSION 3.0)
 project(wikiracer)
