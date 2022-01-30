@@ -2,6 +2,7 @@
 #include <fstream>      // for ifstream
 #include <sstream>      // for stringstream
 #include <filesystem>   	// making inputting files easier
+#include <stdexcept>
 #include <unordered_set>
 #include <vector>
 #include <queue>
@@ -65,7 +66,7 @@ vector<string> findWikiLadder(const string& start_page, const string& end_page) 
         (void) w;
         (void) target_set;
         (void) left;
-        (void) right
+        (void) right;
         return false; // replace this line! make sure to use numCommonLinks.
     };
     // END STUDENT CODE HERE
@@ -78,6 +79,11 @@ vector<string> findWikiLadder(const string& start_page, const string& end_page) 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     // BEGIN STUDENT CODE HERE
     // something like priority_queue<...> queue(...);
+    // please delete ALL 4 of these lines! they are here just for the code to compile.
+    std::priority_queue<vector<string>> queue;
+    throw std::invalid_argument("Not implemented yet. Please finish working on wikiscraper.cpp, test it 
+    with ./test-wikiscraper.sh, and then rerun ./build_and_run.sh once you have passed all of the provided tests!");
+    return {};
 
     // END STUDENT CODE HERE
     ///////////////////////////////////////////////////////////////////////////////////////////////////

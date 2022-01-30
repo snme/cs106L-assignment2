@@ -25,9 +25,6 @@ cmake .. "-DTEST_WIKISCRAPER=ON -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsys
 cmake --build .' > build-test.sh
 chmod +x build-test.sh
 
-# ./build.sh
-echo 'As it stands, this project will NOT compile. Please work on each section and test your wikiscraper.cpp file before running! Successfully built! now wrapping up'
-
 cd ..
 # confirm and print out confirmation message + instructions.
 echo '#!/bin/bash
@@ -39,11 +36,9 @@ cd ..
 ./build/main' > build_and_run.sh
 chmod +x build_and_run.sh
 
-echo 'From now on, all you have to do to compile, build, and run your project
-is to type "./build_and_run.sh" (without the quotes) and hit enter. To test, run
-"./test-wikiscraper.sh".
-If you run into any issues and want to quit out of the program, press the ctrl and c key
-at the same time!'
+# build to set path to CPR
+echo 'Successfully built! Running ./build_and_run.sh.'
+./build_and_run.sh
 
 echo 'cmake_minimum_required(VERSION 3.0)
 project(wikiracer)
@@ -62,4 +57,11 @@ else()
     message("Building Entire Project")
     add_executable(main main.cpp wikiscraper.cpp error.cpp)
     target_link_libraries(main PRIVATE cpr::cpr)
-endif()' > CMakeLists.txt
+endif()' >| CMakeLists.txt
+
+echo 'All done! From now on, all you have to do to compile, build, and run your entire project
+is to type "./build_and_run.sh" (without the quotes) and hit enter. Before doing so,
+you will want to complete wikiscraper.cpp and test it with "./test-wikiscraper.sh". Once you
+are passing all of those tests, feel free to run ./build_and_run.sh to build the entire project!
+If you run into any issues and want to quit out of the program, press the ctrl and c key
+at the same time!'
