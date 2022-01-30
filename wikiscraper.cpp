@@ -28,7 +28,7 @@ using std::unordered_map;   using std::unordered_set;
 bool valid_wikilink(const string& link) {
     // replace these lines!
     (void) link;
-    return false;
+    throw std::invalid_argument("Not implemented yet.\n");
 }
 // END STUDENT CODE HERE
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -52,10 +52,8 @@ unordered_set<string> findWikiLinks(const string& inp) {
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////
         // BEGIN STUDENT CODE HERE
-        // Please delete this line!
-        throw std::invalid_argument("Not implemented yet. Please finish working on wikiscraper.cpp, test it "
-        "with ./test-wikiscraper.sh, and then rerun ./build_and_run.sh once you have passed all of the provided tests!");
-         
+        // Please delete this line when you start working!
+        throw std::invalid_argument("Not implemented yet.\n");
         // END STUDENT CODE HERE
         ///////////////////////////////////////////////////////////////////////////////////////////////////
 

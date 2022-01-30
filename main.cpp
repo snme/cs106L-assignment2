@@ -84,8 +84,7 @@ vector<string> findWikiLadder(const string& start_page, const string& end_page) 
     // something like priority_queue<...> queue(...);
     // please delete ALL 4 of these lines! they are here just for the code to compile.
     std::priority_queue<vector<string>> queue;
-    throw std::invalid_argument("Not implemented yet. Please finish working on wikiscraper.cpp, test it "
-    "with ./test-wikiscraper.sh, and then rerun ./build_and_run.sh once you have passed all of the provided tests!");
+    throw std::invalid_argument("Not implemented yet.\n");
     return {};
 
     // END STUDENT CODE HERE
