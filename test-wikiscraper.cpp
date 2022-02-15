@@ -29,7 +29,7 @@ const string valid_wikilink_test2() {
 }
 
 /*********************************************
- * TEST #3: Valid Wikilink Basic Check: invalid
+ * TEST #3: Valid Wikilink Basic Check: valid
  ********************************************/
 const string valid_wikilink_test3() {
     return valid_wikilink("") ? "valid" : "invalid";
@@ -69,13 +69,14 @@ const string valid_wikilink_test7() {
 
 const string findWikiLinks_test1() {
     // read in test file into string (Wikipedia)
-    std::ifstream in("../test-resources/Germany.html");
+    std::ifstream in("./test-resources/Germany.html");
     std::ostringstream ss;
     ss << in.rdbuf();
     string file = ss.str();
 
     // call findWikiLinks for the inputted Wikipedia page
     auto links = findWikiLinks(file);
+    cout << links.size() << endl;
 
     // convert links to string.
     string res = "";
@@ -111,8 +112,8 @@ int main(int argc, char *argv[]) {
         valid_wikilink_test7,
         findWikiLinks_test1
     };
-    if (exerciseNum > 0 && exerciseNum < 8) {
-        cout << tests[exerciseNum]() << endl;
+    if (exerciseNum > 0 && exerciseNum <= 8) {
+        cout << tests[exerciseNum - 1]() << endl;
     }
     
     return 0;
