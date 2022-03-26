@@ -113,13 +113,6 @@ unordered_set<string> WikiScraper::getLinkSet(const string& page_name) {
 
 WikiScraper::WikiScraper() {
     (void)getPageSource("Main_Page");
-#ifdef _WIN32
-    // define something for Windows
-    system("cls");
-#else
-    // define it for a Unix machine
-    system("clear");
-#endif
 }
 
 
