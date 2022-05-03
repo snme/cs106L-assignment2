@@ -76,7 +76,7 @@ const string findWikiLinks_test1() {
 
     // call findWikiLinks for the inputted Wikipedia page
     auto links = findWikiLinks(file);
-    cout << links.size() << endl;
+    cout << links.size() << " links found." << endl;
 
     // convert links to string.
     string res = "";

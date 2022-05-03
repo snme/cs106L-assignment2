@@ -76,10 +76,10 @@ while True:
     if (student_output != solution_output):
         print()
         failures += 1
-        print(f"Error: expected output\n------------------\n{solution_output}",
+        print(f"Error: wrong student output! First few lines of expected output\n------------------\n{solution_output[:min(5000, len(solution_output))]}",
                 end="")
-        print("------------------\nbut actual output was")
-        print(f"------------------\n{student_output}", end="")
+        print("\n------------------\nbut first few lines of student's output were")
+        print(f"------------------\n{student_output[:min(5000, len(student_output))]}", end="")
         print("------------------")
 
     # print confirmation that test finished (delete old message)
